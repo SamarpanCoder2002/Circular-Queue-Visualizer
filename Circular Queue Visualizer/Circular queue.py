@@ -1,3 +1,4 @@
+                                     # Circular Queue Visualizer #
 from tkinter import *
 from tkinter import messagebox
 import time
@@ -45,23 +46,23 @@ class CircularQueue:
         #Make Queue Container
         self.make_canvas.create_line(229, 250, 611, 250,width=3,fill="yellow")
         self.make_canvas.create_line(229, 300, 611, 300, width=3,fill="yellow")
-
+         
         take_x = 190
         for i in range(7):
             make_index = Label(self.make_canvas,text=i-1,bg="chocolate",fg="blue",font=("Arial",15,"bold"))
             make_index.place(x=take_x,y=165+50)
             take_x+=63
-
+        # All about rear pointer
         points_rear = (205,255+50,205-20,(255+320)/2+50,205-10,(255+320)/2+50,205-10,320+50,205+10,320+50,205+10,(255+320)/2+50,205+20,(255+320)/2+50)
         self.rear_indicator = self.make_canvas.create_polygon(points_rear,width=3,fill="#0FFF0F",outline="black")
         self.rear_label = Label(self.make_canvas,text="rear",fg="brown",bg="chocolate",font=("Arial",20,"bold"))
         self.rear_label.place(x=self.rear_label_position_controller,y=323+50)
-
+        # All about front pointer
         points_front = (205,160+50, 205-20,(160+90)/2+50, 205-10,(160+90)/2+50, 205-10,90+50, 205+10,90+50, 205+10,(160+90)/2+50, 205+20,(160+90)/2+50)
         self.front_indicator = self.make_canvas.create_polygon(points_front,width=3,fill="#0FFF0F",outline="black")
         self.front_label = Label(self.make_canvas, text="front", fg="brown", bg="chocolate", font=("Arial", 20, "bold"))
         self.front_label.place(x=self.front_label_position_controller, y=50+50)
-
+        # All about index no.
         points_index = (660+20,230, (660+580)/2-7+20,230-20, (660+580)/2+20,230-7, 580+20,230-7, 580+20,230+7, (660+580)/2+20,230+7, (660+580)/2-7+20,230+20)
         self.make_canvas.create_polygon(points_index,width=3,fill="red",outline="black")
         index_no = Label(self.make_canvas,text="Index no.",fg="#9B1B30",bg="chocolate",font=("Arial",15,"bold"))
@@ -88,15 +89,13 @@ class CircularQueue:
         else:
             self.make_insert['state'] = DISABLED
             self.make_delete['state'] = DISABLED
-            self.take_input = Label(self.window, text="Enter the number to input", fg="blue", bg="orange",
-                                    font=("Arial", 12, "bold"))
+            
+            self.take_input = Label(self.window, text="Enter the number to input", fg="blue", bg="orange", font=("Arial", 12, "bold"))
             self.take_input.place(x=300, y=530)
-            self.take_entry = Entry(self.window, fg="blue", bg="white",relief=SUNKEN,bd=6,width=5,
-                                    font=("Arial", 10, "bold"))
+            self.take_entry = Entry(self.window, fg="blue", bg="white",relief=SUNKEN,bd=6,width=5, font=("Arial", 10, "bold"))
             self.take_entry.place(x=320, y=560)
             self.take_entry.focus()
-            self.add_btn = Button(self.window,text="Add",fg="red", bg="black",relief=SUNKEN,bd=6,width=5,
-                                    font=("Arial", 8, "bold"),command=lambda: self.box_insert(False),state=NORMAL)
+            self.add_btn = Button(self.window,text="Add",fg="red", bg="black",relief=SUNKEN,bd=6,width=5, font=("Arial", 8, "bold"),command=lambda: self.box_insert(False),state=NORMAL)
             self.add_btn.place(x=400, y=560)
             self.window.bind('<Return>',self.box_insert)
 
@@ -106,8 +105,7 @@ class CircularQueue:
         self.add_btn.place_forget()
 
         self.make_box = self.make_canvas.create_rectangle(60, 402, 120, 444, width=3, fill="black", outline="blue")
-        self.make_label = Label(self.window, text=self.take_entry.get(), fg="red", bg="black",
-                                    font=("Arial", 12, "bold"))
+        self.make_label = Label(self.window, text=self.take_entry.get(), fg="red", bg="black", font=("Arial", 12, "bold"))
         self.make_label.place(x=self.input_label_x, y=self.input_label_y)
 
         if self.front_index>0 and self.rear_index==5:
