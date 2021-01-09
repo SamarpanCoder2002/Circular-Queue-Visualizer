@@ -246,7 +246,7 @@ if __name__ == '__main__':
     window.geometry("800x600")
     window.maxsize(800,600)
     window.minsize(800,600)
-    window.iconbitmap("circular_queue_icon.ico")
+    #window.iconbitmap("circular_queue_icon.ico")
     window.config(bg="orange")
     CircularQueue(window)
     window.mainloop()
